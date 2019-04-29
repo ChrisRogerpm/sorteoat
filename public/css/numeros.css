@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:700');
+
+body{
+    height: 100vh;
+    overflow: hidden;
+}
+.contenedor{
+	height: 100vh; 
+	display: flex; 
+	/* align-items: center; 
+    justify-content: center; */
+}
+.contendorGenerador{
+    min-height: 13vh; 	
+    display: flex; 
+	/*align-items: center; 
+     justify-content: center; */
+}
+.fly-inn {
+    display: none;
+  }
+
+.fly-in {
+  font-size: 4vw;
+  /* margin: 20vh auto; */
+  height: 8vh; 
+  text-transform: uppercase;
+}
+
+.fly-in div {
+  text-align: center;
+  position: absolute;
+  margin-top: 0%;
+  left: 0px;
+  top: 0px;
+  opacity: 0;
+  width: 100%;
+  animation: switch 5s linear 1; 
+}
+
+.fly-in div:nth-child(10) {
+    text-align: center;
+    position: absolute;
+    margin-top: 0%;
+    left: 0px;
+    opacity: 0;
+    width: 100%;
+    animation: switch1 7s linear 1; 
+    animation-fill-mode: forwards;
+}
+
+canvas {
+    position: fixed;
+    width:100%;
+    height:100%;
+}
+
+.fly-in div:nth-child(1) { animation-delay: 2s;color: #EFC050}
+.fly-in div:nth-child(2) { animation-delay: 3s;color: #45B5AA}
+.fly-in div:nth-child(3) { animation-delay: 4s;color: #D65076}
+.fly-in div:nth-child(4) { animation-delay: 5s;color: #DD4124}
+.fly-in div:nth-child(5) { animation-delay: 6s;color: #009874}
+.fly-in div:nth-child(6) { animation-delay: 7s;color: #AD5E99}
+.fly-in div:nth-child(7) { animation-delay: 8s;color: #964F4C}
+.fly-in div:nth-child(8) { animation-delay: 9s;color: #F7CAC9}
+.fly-in div:nth-child(9) { animation-delay: 10s;color: #88B04B}
+.fly-in div:nth-child(10) { animation-delay: 11s;color: #5F4B8B}
+
+@keyframes switch {
+    0% { opacity: 0;filter: blur(20px); transform:scale(3)}
+    3% { opacity: 1;filter: blur(0); transform:scale(1)}
+    10% { opacity: 1;filter: blur(0); transform:scale(.5)}
+    13% { opacity: 0;filter: blur(10px); transform:scale(.1)}
+    80% { opacity: 0}
+    100% { opacity: 0}
+}
+@keyframes switch1 {
+    0% { opacity: 0;filter: blur(20px); transform:scale(3);position: fixed;top: 30vh; }
+    3% { opacity: 1;filter: blur(0); transform:scale(1);position: fixed;top: 30vh}
+    10% { opacity: 1;filter: blur(0); transform:scale(.5);position: fixed;top: 30vh}
+    13% { opacity: 1;filter: blur(10px); transform:scale(.1);position: fixed;top: 30vh}
+    80% { opacity: 1;position: fixed;top: 30vh}
+    100% { opacity: 1;position: fixed;top: 30vh;font-size: 8vw;}
+}
+
+
+ /* .svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 200ms linear;
+  }
+  
+  path {
+    stroke-dasharray: 80px, 10px;
+    stroke-width: 10px;
+    stroke: #0F1B24;
+  } */
+   
+  /* body {
+    margin:0;
+    padding:0;
+  } */
+  
+  

@@ -1,0 +1,178 @@
+body {    
+    background: url("../images/fondoWEB.png") fixed;
+    background-size: 100%;
+}
+.wizard-container{
+    padding-top: 0px !important;
+}
+#headerLogo{
+    display: none;
+    height: 14vh;    
+}
+#imgLateralIzquierdo{
+    display: inline-block;
+    position: absolute;
+    right: -25vh;
+    margin-top: 30vh;
+    height: 60vh;        
+}
+#imgLateralDerecho{
+    display: inline-block;
+    position: absolute;
+    left: -25vh;
+    margin-top: 30vh;
+    height: 60vh;    
+    transform: rotateY(180deg);   
+}
+#headerLogoWEB{
+    width: 70%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.wizard-header{    
+    padding-top: 0px !important;   
+    overflow: hidden;
+    height: 20vh;
+    position: relative;
+}
+.wizard-navigation{
+    background-color: #0F1B24 !important;   
+}
+.wizard-card{
+    background-image: url("../images/fondoWEB.png");
+}
+.nav-pills{
+    background-color: #0F1B24;
+}
+#btnTerminar{
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    background-color: #0F1B24 !important;
+}
+#btnSiguiente{
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    background-color: #0F1B24 !important;
+}
+#btnDatosUsuario{
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+}
+#btnCancelar{
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+}
+@media screen and (max-height: 800px) {    
+    #headerLogoWEB{
+        width: 70%;        
+    }
+}
+@media screen and (max-width: 980px) and (orientation: landscape){
+    .wizard-header { 
+        height: 20vw !important;
+    }
+    #headerLogo{
+        height: 30vw !important;
+    }
+}
+@media screen and (max-width: 992px) {  
+    #imgLateralIzquierdo{
+        margin-top: 30vh;
+        height: 60vh;
+        margin-left: -15vh; 
+        z-index: -10;
+    }
+}
+@media screen and (max-width: 770px) {  
+    .lateral{
+        display: none;
+    }
+}
+@media screen and (max-width: 600px) {  
+    #headerLogoWEB {
+        display: none;
+    }
+    #headerLogo{
+        display:block;
+        height: 27vh;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    body{
+        height: 100vh !important;
+        width: 100vw !important;
+        /* overflow: hidden !important; */
+    }
+    .mainContainer{
+        padding-right: 0px !important;
+        padding-left: 0px !important;
+    }
+    .wizard-container{
+        padding-top:0px !important;
+    }
+    .card{
+        border-radius: 0px !important;
+    }
+    .descripcion{
+        display: none;
+    }
+    .btn-wd{
+        width: 40vw !important;
+    }
+    .col-sm-12{
+        padding-right: 0px !important; 
+        padding-left: 0px !important; 
+    }     
+    .wizard-card{
+        height: 100vh;
+    } 
+    .tab-content{
+        overflow-y: scroll !important;
+        height: 62vh !important;
+    }
+    .wizard-header{
+        text-align: center;
+        height: 20vh ;
+        padding-top: 0px !important;
+        overflow: hidden;
+    }
+    .wizard-footer{
+        height: 10vh !important;
+    }
+    .wizard-navigation{
+        height: 6vh !important;
+    }
+    .ul1{
+        width: 100vw !important;
+        overflow: hidden !important;
+    }
+    .moving-tab{
+        width: 49% !important;
+    }
+}
+@media screen and (max-width: 320px){
+    table{
+        font-size: 11px;
+    }
+    .wizard-header{        
+        height: 22vw !important;
+    }
+    #btnLogOut{
+        font-size: 24px !important;
+    }
+    .tab-content{
+        overflow-y: scroll !important;
+        height: 62vh !important;
+    }
+    .moving-tab{
+        width: 48% !important;
+    }
+}
+

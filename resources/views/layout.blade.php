@@ -197,6 +197,7 @@
                         </a>
                         <ul class="sub-menu collapse" data-menu-title="Dashboard">
                             <li><a href="{{ url('EditarClienteVista') }}"><i class="icon icon-inline fa fa-circle-thin"></i> <span class="title">Datos Cliente</span></a></li>
+                            <li><a href="{{ route('LocalVenta') }}"><i class="icon icon-inline fa fa-circle-thin"></i> <span class="title">Locales Venta</span></a></li>
                         </ul>
                     </li>
                     <!-- <li><a href="{{ url('sorteos') }}"><i class="icon icon-inline fa fa-mail-forward"></i> <span class="title">Sorteos</span></a></li> -->

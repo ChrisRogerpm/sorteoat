@@ -2,47 +2,47 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TblUbigeo;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\TblCliente;
 use App\Http\Controllers\SeguridadController;
-use App\Models\TblAuditoria,App\Models\Curl,App\Models\TblGeneracionOpcionesSorteo,App\Models\TblConsolidadoOpcionesSorteo,App\Models\TblGanador;
+use App\Models\TblAuditoria, App\Models\Curl, App\Models\TblGeneracionOpcionesSorteo, App\Models\TblConsolidadoOpcionesSorteo, App\Models\TblGanador;
 
 
 class ReporteController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(function($request,$next)
-        {
+        $this->middleware(function ($request, $next) {
             $app = app();
             $controller = app('App\Http\Controllers\SeguridadController')->BuscarPermiso($request);
             $respuesta = $controller;
-            if(!$respuesta){
+            if (!$respuesta) {
                 //echo $respuesta;
-                if ($request->ajax()){
-                    return response()->json(['error' => 'Unauthenticated.','permiso'=>Route::current()->uri()], 401)->send();
-                }
-                else{
+                if ($request->ajax()) {
+                    return response()->json(['error' => 'Unauthenticated.', 'permiso' => Route::current()->uri()], 401)->send();
+                } else {
                     return abort('401')->send();
-                    
+
                 }
+            } else {
+                return $next($request);
             }
-            else{
-               return $next($request); 
-            }
-       });               
-    }  
+        });
+    }
 
     public function ReporteClientes()
     {
         return view('Reportes.ReporteClientes');
     }
+
     public function ReporteGanadores()
     {
         return view('Reportes.ReporteGanadores');
-    }    
+    }
+
     public function ReporteLocales()
     {
         return view('Reportes.ReporteLocales');
@@ -64,6 +64,7 @@ class ReporteController extends Controller
         }
         return response()->json(['data' => $lista, 'mensaje' => $mensaje_error]);
     }
+
     public function ReporteGanadoresJson(Request $request)
     {
         $lista = "";
@@ -75,7 +76,7 @@ class ReporteController extends Controller
         }
         return response()->json(['data' => $lista, 'mensaje' => $mensaje_error]);
     }
-    
+
     public function ReporteLocalesJson(Request $request)
     {
         $lista = "";
@@ -106,9 +107,9 @@ class ReporteController extends Controller
             $mensaje_error = $ex->errorInfo;
         }
 
-        return response()->json(['data' => $lista, 'mensaje' => $mensaje_error]);        
+        return response()->json(['data' => $lista, 'mensaje' => $mensaje_error]);
         //return response()->json(['data' => $request->arrJuegos[0]]);        
-    }  
+    }
 
     ///// inicio reporte auditoriaaa  
 
@@ -129,21 +130,20 @@ class ReporteController extends Controller
 
         return response()->json(['data' => $lista, 'mensaje' => $mensaje_error]);
     }
+
     ////fin reporte auditoria
     public function ListadoLocalesJson()
     {
         $lista = "";
         $mensaje_error = "";
         try {
-            //$lista = Curl::consultarLocal(290737411);     
             $s3k_password = "j3KJ0sdfldsKMmll0965Kwrfdml540QN";
             $curl = New Curl($s3k_password);
-            $lista=$curl->ListarLocalJson();      
-            //$lista = Curl::ListarLocalJson();
+            $lista = $curl->ListarLocalJson();
         } catch (QueryException $ex) {
             $mensaje_error = $ex->errorInfo;
         }
-        return response()->json(['data' => $lista, 'mensaje' => $mensaje_error]);       
+        return response()->json(['data' => $lista, 'mensaje' => $mensaje_error]);
     }
 
     public function ListadoClientesJson(Request $request)
@@ -152,13 +152,13 @@ class ReporteController extends Controller
         $mensaje_error = "";
         try {
             //$lista = Curl::consultarLocal(290737411);     
-         
+
             //$lista=$curl->ListarLocalJson();      
-            $lista= TblCliente::ListadoClientesJson($request);
+            $lista = TblCliente::ListadoClientesJson($request);
         } catch (QueryException $ex) {
             $mensaje_error = $ex->errorInfo;
         }
-        return response()->json(['data' => $lista, 'mensaje' => $mensaje_error]);       
+        return response()->json(['data' => $lista, 'mensaje' => $mensaje_error]);
     }
 
     public function ListadoClientesConsultaJson(Request $request)
@@ -166,11 +166,11 @@ class ReporteController extends Controller
         $lista = "";
         $mensaje_error = "";
         try {
-              
-            $lista= TblCliente::ListadoClientesConsultaJson($request);
+
+            $lista = TblCliente::ListadoClientesConsultaJson($request);
         } catch (QueryException $ex) {
             $mensaje_error = $ex->errorInfo;
         }
-        return response()->json(['data' => $lista, 'mensaje' => $mensaje_error]);       
+        return response()->json(['data' => $lista, 'mensaje' => $mensaje_error]);
     }
 }

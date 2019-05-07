@@ -374,7 +374,7 @@ class TicketController extends Controller
         } 
         $ubigeo=TblUbigeo::ObtenerUbigeoJson((int)$departamento);
         switch ($ubigeo->nombre) {
-            case (strtoupper($ubigeo->nombre)=='ANCASH'||strtoupper($ubigeo->nombre)=='CAJAMARCA'|| strtoupper($ubigeo->nombre)=='LA LIBERTAD'||
+            case (strtoupper($ubigeo->nombre)=='CAJAMARCA'|| strtoupper($ubigeo->nombre)=='LA LIBERTAD'||
              strtoupper($ubigeo->nombre)=='LAMBAYEQUE'|| strtoupper($ubigeo->nombre)=='PIURA'|| strtoupper($ubigeo->nombre)=='TUMBES'):
                 $zona=1;
                 break;

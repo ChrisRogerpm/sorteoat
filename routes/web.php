@@ -10,74 +10,77 @@
 |
 */
 
-Route::group(array(), function()
-{	                                   
-	Route::get('/LoginCC', 'UsuarioController@LoginCCVista')->name('LoginCC');	
-	Route::get('/EnvioCorreo', 'UsuarioController@EnvioCorreo');	
-	Route::post('/ConsultarCliente', 'UsuarioController@UsuarioController');	
-	Route::post('/ValidarLoginJsonFk','UsuarioController@ValidarLoginJson')->name('ValidarLoginJson');
-	Route::post('/ValidarLoginCCJson','UsuarioController@ValidarLoginCCJson')->name('ValidarLoginCCJson');
-	Route::get('/LogOutCC', 'UsuarioController@LogOutCCJson')->name('LogOutCC');	
-	Route::get('/DatosUsuarioActivo', 'UsuarioController@ObtenerActivoUsuarioJson')->name('DatosUsuarioActivo');		
+Route::group(array(), function () {
+    Route::get('/LoginCC', 'UsuarioController@LoginCCVista')->name('LoginCC');
+    Route::get('/EnvioCorreo', 'UsuarioController@EnvioCorreo');
+    Route::post('/ConsultarCliente', 'UsuarioController@UsuarioController');
+    Route::post('/ValidarLoginJsonFk', 'UsuarioController@ValidarLoginJson')->name('ValidarLoginJson');
+    Route::post('/ValidarLoginCCJson', 'UsuarioController@ValidarLoginCCJson')->name('ValidarLoginCCJson');
+    Route::get('/LogOutCC', 'UsuarioController@LogOutCCJson')->name('LogOutCC');
+    Route::get('/DatosUsuarioActivo', 'UsuarioController@ObtenerActivoUsuarioJson')->name('DatosUsuarioActivo');
 
-	Route::get('/AllinOne', 'SorteoController@SorteoActivoValidarJson');
-	Route::get('/ListadoSorteo', 'SorteoController@SorteoListarVista');
-	Route::get('/ConsultarIniciadoSorteoJson', 'SorteoController@ConsultarIniciadoSorteoJson');	
-	Route::get('/NuevoSorteo', 'SorteoController@InsertarSorteoVista');
-	Route::get('/AnimacionSorteo', 'SorteoController@AnimacionSorteo');	
-	Route::post('/GuardarSorteo', 'SorteoController@SorteoInsertarJson');
-	Route::post('/SorteoListarJson', 'SorteoController@SorteoListarJson');
-	Route::post('/IniciarSorteoJson', 'SorteoController@IniciarSorteoJson');
-		
-	Route::post('/ConsultarTicket', 'TicketController@ConsultarTicketJson');
-	Route::post('/ConsultarTickets', 'TicketController@ConsultarTicketsJson');
-	Route::get('/RegistroT/{id}', 'TicketController@SorteoActivoValidarJson')->name('RegistroT');
+    Route::get('/AllinOne', 'SorteoController@SorteoActivoValidarJson');
+    Route::get('/ListadoSorteo', 'SorteoController@SorteoListarVista');
+    Route::get('/ConsultarIniciadoSorteoJson', 'SorteoController@ConsultarIniciadoSorteoJson');
+    Route::get('/NuevoSorteo', 'SorteoController@InsertarSorteoVista');
+    Route::get('/AnimacionSorteo', 'SorteoController@AnimacionSorteo');
+    Route::post('/GuardarSorteo', 'SorteoController@SorteoInsertarJson');
+    Route::post('/SorteoListarJson', 'SorteoController@SorteoListarJson');
+    Route::post('/IniciarSorteoJson', 'SorteoController@IniciarSorteoJson');
 
-	Route::get('/', 'ClienteController@LoginVista')->name('Login');
-	Route::get('/LogOut', 'ClienteController@LogOutJson')->name('LogOut');
-	Route::get('/ObtenerTerminoCondicionClienteJson','ClienteController@ObtenerTerminoCondicionClienteJson');	
-	Route::post('/ValidarClienteJson','ClienteController@ValidarClienteJson')->name('ValidarClienteJson');
-	Route::post('/GuardarClienteJson','ClienteController@GuardarClienteJson')->name('GuardarClienteJson');	
-	Route::post('/GuardarDatosUsuario', 'ClienteController@ActualizarClienteJson');
-	//Route::get('/ObtenerDatosReniec/{txtDni}', 'ClienteController@ObtenerDatosReniec');
+    Route::post('/ConsultarTicket', 'TicketController@ConsultarTicketJson');
+    Route::post('/ConsultarTickets', 'TicketController@ConsultarTicketsJson');
+    Route::get('/RegistroT/{id}', 'TicketController@SorteoActivoValidarJson')->name('RegistroT');
 
-	Route::get('/cajeros', 'CajaController@RegistroTicketsVista');
-	Route::post('/GenerarTicketAgrupadoJson', 'CajaController@GenerarTicketAgrupadoJson');	
-	
-	Route::get('/ReporteClientes', 'ReporteController@ReporteClientes');	
-	Route::get('/ReporteGanadores', 'ReporteController@ReporteGanadores');	
-	Route::get('/ReporteOpcionesSorteos', 'ReporteController@ReporteOpcionesSorteos');
-	Route::post('/ListadoClientesJson','ReporteController@ListadoClientesJson');	
-	Route::get('/ReporteLocales','ReporteController@ReporteLocales');
-	Route::get('/ListadoAuditoria', 'ReporteController@ReporteAuditoriaVista');
-	Route::get('/ListadoLocalesJson','ReporteController@ListadoLocalesJson');
-	Route::post('/ReporteClientesJson', 'ReporteController@ReporteClientesJson');
-	Route::post('/ReporteGanadoresJson', 'ReporteController@ReporteGanadoresJson');	
-	Route::post('/ReporteOpcionesSorteosJson', 'ReporteController@ReporteOpcionesSorteosJson');
-	Route::post('/ReporteLocalesJson', 'ReporteController@ReporteLocalesJson');    	
-	Route::post('/ListdoAuditoriaJson', 'ReporteController@ReporteAuditoriaJson');
+    Route::get('/', 'ClienteController@LoginVista')->name('Login');
+    Route::get('/LogOut', 'ClienteController@LogOutJson')->name('LogOut');
+    Route::get('/ObtenerTerminoCondicionClienteJson', 'ClienteController@ObtenerTerminoCondicionClienteJson');
+    Route::post('/ValidarClienteJson', 'ClienteController@ValidarClienteJson')->name('ValidarClienteJson');
+    Route::post('/GuardarClienteJson', 'ClienteController@GuardarClienteJson')->name('GuardarClienteJson');
+    Route::post('/GuardarDatosUsuario', 'ClienteController@ActualizarClienteJson');
+    //Route::get('/ObtenerDatosReniec/{txtDni}', 'ClienteController@ObtenerDatosReniec');
 
-	//Route::get('/datos', 'GeneradorController@ObtenerAleatorio');
+    Route::get('/cajeros', 'CajaController@RegistroTicketsVista');
+    Route::post('/GenerarTicketAgrupadoJson', 'CajaController@GenerarTicketAgrupadoJson');
 
-	Route::post('/ListadoTipoBeneficio', 'TipoBeneficioController@Listado');
+    Route::get('/ReporteClientes', 'ReporteController@ReporteClientes');
+    Route::get('/ReporteGanadores', 'ReporteController@ReporteGanadores');
+    Route::get('/ReporteOpcionesSorteos', 'ReporteController@ReporteOpcionesSorteos');
+    Route::post('/ListadoClientesJson', 'ReporteController@ListadoClientesJson');
+    Route::get('/ReporteLocales', 'ReporteController@ReporteLocales');
+    Route::get('/ListadoAuditoria', 'ReporteController@ReporteAuditoriaVista');
+    Route::get('/ListadoLocalesJson', 'ReporteController@ListadoLocalesJson');
+    Route::post('/ReporteClientesJson', 'ReporteController@ReporteClientesJson');
+    Route::post('/ReporteGanadoresJson', 'ReporteController@ReporteGanadoresJson');
+    Route::post('/ReporteOpcionesSorteosJson', 'ReporteController@ReporteOpcionesSorteosJson');
+    Route::post('/ReporteLocalesJson', 'ReporteController@ReporteLocalesJson');
+    Route::post('/ListdoAuditoriaJson', 'ReporteController@ReporteAuditoriaJson');
 
-	Route::post('/ListadoBeneficioJson','BeneficioController@ListadoBeneficioJson');
+    //Route::get('/datos', 'GeneradorController@ObtenerAleatorio');
 
-	Route::get('/Dashboard', 'HomeController@Home')->name('Dashboard');
+    Route::post('/ListadoTipoBeneficio', 'TipoBeneficioController@Listado');
 
-	Route::get('/EditarClienteVista', 'SoporteController@EditarClienteVista')->name('EditarClienteVista');	
-	Route::post('/BuscarClientesJson', 'SoporteController@BuscarClientesJson')->name('BuscarClientesJson');	
-	Route::post('/ActualizarDNIClienteJson', 'SoporteController@ActualizarDNIClienteJson')->name('ActualizarDNIClienteJson');			
-	
-	Route::get('/EditarTerminosCondiciones', 'TerminoCondicionController@EditarTerminosCondicionesVista');
-	Route::post('/InsertarTerminoCondicionJson', 'TerminoCondicionController@InsertarTerminoCondicionJson');	
-	Route::get('/ObtenerTerminoCondicionJson', 'TerminoCondicionController@ObtenerTerminoCondicionJson');		
+    Route::post('/ListadoBeneficioJson', 'BeneficioController@ListadoBeneficioJson');
 
-	// REPORTE CONSULTA CLIENTES
-	
-	Route::get('/ReporteClientesConsulta', 'ReporteController@ReporteClientesConsulta');
-	Route::post('/ListadoClientesConsultaJson','ReporteController@ListadoClientesConsultaJson');
-	// FIN REPORTE CONSULTA CLIENTES
+    Route::get('/Dashboard', 'HomeController@Home')->name('Dashboard');
+
+    Route::get('/EditarClienteVista', 'SoporteController@EditarClienteVista')->name('EditarClienteVista');
+    Route::post('/BuscarClientesJson', 'SoporteController@BuscarClientesJson')->name('BuscarClientesJson');
+    Route::post('/ActualizarDNIClienteJson', 'SoporteController@ActualizarDNIClienteJson')->name('ActualizarDNIClienteJson');
+
+    Route::get('/EditarTerminosCondiciones', 'TerminoCondicionController@EditarTerminosCondicionesVista');
+    Route::post('/InsertarTerminoCondicionJson', 'TerminoCondicionController@InsertarTerminoCondicionJson');
+    Route::get('/ObtenerTerminoCondicionJson', 'TerminoCondicionController@ObtenerTerminoCondicionJson');
+
+    // REPORTE CONSULTA CLIENTES
+
+    Route::get('/ReporteClientesConsulta', 'ReporteController@ReporteClientesConsulta');
+    Route::post('/ListadoClientesConsultaJson', 'ReporteController@ListadoClientesConsultaJson');
+
+    Route::get('/ListarLocal', 'LocalController@ListarLocal')->name('LocalVenta');
+    Route::post('/ListarLocalJson', 'LocalController@ListarLocalJson');
+    Route::post('/SincronizarLocalVentaJson', 'LocalController@SincronizarLocalVentaJson');
+    // FIN REPORTE CONSULTA CLIENTES
 });
 
 //seguridad

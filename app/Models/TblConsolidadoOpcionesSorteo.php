@@ -174,7 +174,7 @@ class TblConsolidadoOpcionesSorteo extends Eloquent
                 'fechaBloqueo' => $l->fechaBloqueo,
                 'ticketsInvalidos' => $l->ticketsInvalidos,
                 'observacion_ticket_agrupado' => $l->observacion_ticket_agrupado,
-                'Departamento' => $departamento->nombre
+                'Departamento' => $departamento
             ];
         }
 

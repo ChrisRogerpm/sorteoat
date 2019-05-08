@@ -137,6 +137,7 @@ class ReporteController extends Controller
         $lista = "";
         $mensaje_error = "";
         try {
+//            $s3k_password = "j3KJ0sdfldsKMmll0965Kwrfdml540QN";
             $s3k_password = "j3KJ0sdfldsKMmll0965Kwrfdml540QN";
             $curl = New Curl($s3k_password);
             $lista = $curl->ListarLocalJson();

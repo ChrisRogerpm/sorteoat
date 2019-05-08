@@ -23,9 +23,17 @@ class TblUbigeo extends Eloquent
 
     public static function ObtenerDepartamentoUbigeoJson($unit_id)
     {
-        $data = DB::select(DB::raw("SELECT * FROM tbl_local_venta l
-        WHERE l.unit_ids LIKE '%$unit_id%'"))[0];
-        $ubigeo = TblUbigeo::findorfail($data->idUbigeo);
-        return $ubigeo;
+//        $data = DB::select(DB::raw("SELECT * FROM tbl_local_venta l
+//        WHERE l.unit_ids LIKE '%$unit_id%'"))[0];
+        $data = DB::table('tbl_local_venta as l')
+            ->where('l.unit_ids', 'like', '%' . $unit_id . '%')
+            ->first();
+        if ($data != null){
+            $ubigeo = TblUbigeo::findorfail($data->idUbigeo);
+            return $ubigeo->nombre;
+        }else{
+            return 'No Registrado';
+        }
+
     }
 }

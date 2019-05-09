@@ -65,7 +65,7 @@ $(document).ready(function () {
                                 return '<span class="badge badge-warning" style="padding-top: 7px;padding-bottom: 7px;">' + ranking + '</span>'
                             }
                         },
-                        {data: "fecha_registro", title: "Fecha Registro"}
+                        {data: "fecha_registro_ganador", title: "Fecha Registro"}
                     ],
                     "drawCallback": function (settings) {
                     }

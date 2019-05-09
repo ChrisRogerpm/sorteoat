@@ -60,6 +60,7 @@ class TblGanador extends Eloquent
             'numeroGanador' => $numeroGanador,
             'id_usuario' => session()->get('usuarioID'),
             'fecha_registro' => date('Y-m-d'),
+            'fecha_registro_ganador' => now(),
             'ranking' => $ranking
         ]);
         return true;
@@ -79,7 +80,7 @@ class TblGanador extends Eloquent
                 ->leftJoin('tbl_beneficios', 'tbl_beneficios.id', '=', 'tbl_ganador.id_beneficio')
                 ->leftJoin('tbl_sorteos', 'tbl_sorteos.id', '=', 'tbl_beneficios.id_sorteo')
                 ->leftJoin('tbl_clientes', 'tbl_clientes.ID', '=', 'tbl_ganador.id_cliente')
-                ->orderBy('tbl_ganador.id','desc')
+                ->orderBy('tbl_ganador.id', 'desc')
                 ->get();
         } else {
             $ganadores = DB::table('tbl_ganador')
@@ -88,7 +89,7 @@ class TblGanador extends Eloquent
                 ->leftJoin('tbl_sorteos', 'tbl_sorteos.id', '=', 'tbl_beneficios.id_sorteo')
                 ->leftJoin('tbl_clientes', 'tbl_clientes.ID', '=', 'tbl_ganador.id_cliente')
                 ->whereIn('tbl_beneficios.id_sorteo', $request->arrSorteos)
-                ->orderBy('tbl_ganador.id','desc')
+                ->orderBy('tbl_ganador.id', 'desc')
                 ->get();
         }
         return $ganadores;

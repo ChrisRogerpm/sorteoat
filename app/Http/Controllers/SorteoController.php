@@ -178,12 +178,12 @@ class SorteoController extends Controller
                         if (count($clientes) >= 1) {
                             $response = TblSorteo::IniciarSorteoJson($request->idSorteo, $request->idBeneficio);
                             $sorteo = TblSorteo::ObtenerIniciadoSorteoJson();
-
+                            $gnd = TblConsolidadoOpcionesSorteo::ObtenerGanadorProbabilidadGeneracionOpcionesSorteo($request->idSorteo, $beneficio->region);
+                            TblBeneficio::ActualizarBeneficioJson($gnd->numeroGanador, $request->idBeneficio);
                             for ($i = 0; $i < 3; $i++) {
                                 $ranking = $i + 1;
-                                $gnd = TblConsolidadoOpcionesSorteo::ObtenerGanadorProbabilidadGeneracionOpcionesSorteo($request->idSorteo, $beneficio->region);
-                                TblBeneficio::ActualizarBeneficioJson($gnd->numeroGanador, $request->idBeneficio);
-                                TblGanador::InsertarGanadorJson($sorteo, $gnd->numeroGanador, $gnd->id_cliente, $ranking);
+                                $gnd_cliente = TblConsolidadoOpcionesSorteo::ObtenerGanadorProbabilidadGeneracionOpcionesSorteo($request->idSorteo, $beneficio->region);
+                                TblGanador::InsertarGanadorJson($sorteo, $gnd->numeroGanador, $gnd_cliente->id_cliente, $ranking);
                             }
 
                             $mensaje = "Se Inicio el Sorteo Correctamente";
@@ -195,11 +195,12 @@ class SorteoController extends Controller
                         if (count($clientes) == 55) {
                             $response = TblSorteo::IniciarSorteoJson($request->idSorteo, $request->idBeneficio);
                             $sorteo = TblSorteo::ObtenerIniciadoSorteoJson();
+                            $gnd = TblConsolidadoOpcionesSorteo::ObtenerGanadorProbabilidadGeneracionOpcionesSorteo($request->idSorteo, $beneficio->region);
+                            TblBeneficio::ActualizarBeneficioJson($gnd->numeroGanador, $request->idBeneficio);
                             for ($i = 0; $i < 3; $i++) {
                                 $ranking = $i + 1;
-                                $gnd = TblConsolidadoOpcionesSorteo::ObtenerGanadorProbabilidadGeneracionOpcionesSorteo($request->idSorteo, $beneficio->region);
-                                TblBeneficio::ActualizarBeneficioJson($gnd->numeroGanador, $request->idBeneficio);
-                                TblGanador::InsertarGanadorJson($sorteo, $gnd->numeroGanador, $gnd->id_cliente, $ranking);
+                                $gnd_cliente = TblConsolidadoOpcionesSorteo::ObtenerGanadorProbabilidadGeneracionOpcionesSorteo($request->idSorteo, $beneficio->region);
+                                TblGanador::InsertarGanadorJson($sorteo, $gnd->numeroGanador, $gnd_cliente->id_cliente, $ranking);
                             }
                             $mensaje = "Se Inicio el Sorteo Correctamente";
                         } else {

@@ -129,6 +129,7 @@ class SorteoController extends Controller
         $response = "";
         $mensaje = "";
         $gnd = "";
+        $zona = "";
         $clienteGanador = "";
         $asd = "";
         $clientes = "";
@@ -146,6 +147,7 @@ class SorteoController extends Controller
                     $beneficio = TblBeneficio::ObtenerNumeroGanadorBeneficioJson($sorteo->iniciado);
                     $clienteGanador = TblGanador::ObtenerGanadorJson($beneficio->id, $beneficio->numero_ganador);
                     $cliente = TblCliente::ObtenerClienteJson($clienteGanador->id_cliente);
+                    $zona = $beneficio->premio;
                     $gnd = $cliente->nombre . ' ' . $cliente->apellidoPaterno . ' ' . $cliente->apellidoMaterno;
                     TblSorteo::PararSorteoJson($sorteo->id);
                 } else {
@@ -155,7 +157,7 @@ class SorteoController extends Controller
         } catch (QueryException $ex) {
             $mensaje = $ex->errorInfo;
         }
-        return response()->json(['respuesta' => $response, 'qwerty' => $gnd, 'mensaje' => $mensaje, 'clientes' => $clientes]);
+        return response()->json(['respuesta' => $response, 'qwerty' => $gnd, 'Zona' => $zona, 'mensaje' => $mensaje, 'clientes' => $clientes]);
     }
 
     public function IniciarSorteoJson(Request $request)

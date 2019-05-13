@@ -39,6 +39,7 @@ class TblGanador extends Eloquent
 
     protected $dates = [
         'fecha_registro',
+        'fecha_registro_ganador',
         'fecha_modificacion'
     ];
 
@@ -48,6 +49,7 @@ class TblGanador extends Eloquent
         'id_usuario',
         'numeroGanador',
         'fecha_registro',
+        'fecha_registro_ganador',
         'fecha_modificacion',
         'ranking'
     ];

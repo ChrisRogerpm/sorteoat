@@ -1,4 +1,4 @@
-flag = false;
+flag=false;
 $(document).ready(function () {
     anime({
         targets: '.svg path',
@@ -12,57 +12,57 @@ $(document).ready(function () {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    setInterval(function () {
-        ConsultarInicioSorteo()
-    }, 1000);
+    setInterval(function(){ ConsultarInicioSorteo() }, 1000);
     //ConsultarInicioSorteo();
 });
-
 function ConsultarInicioSorteo() {
-    if (flag == false) {
-        flag = true;
+    if(flag==false)
+    {
+        flag=true;
         $.ajax({
             type: 'GET',
             url: './ConsultarIniciadoSorteoJson',
             success: function (response) {
-                // console.log(response);
-                var zona = response.Zona;
-                if (response.respuesta == true) {
-                    var clientes = response.clientes;
-                    console.log(clientes)
+                console.log(response);
+                if(response.respuesta==true)
+                {
+                    var clientes= response.clientes;
                     $(".fly-inn").html("");
-                    var myArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+                    var myArray = ['1','2','3','4','5','6','7','8','9','10'];
                     shuffle(myArray);
-                    i = 1;
-                    while (i <= 10) {
-                        $.each(myArray, function (index, value) {
-                            if (i == 10 && index == 0) {
-                                $("#Opcion" + value).append("<div><p style='font-size:20vh;line-height:1;'>Ganador<p/><p style='font-size: 12vh" +
-                                    "'>" + zona + ' - ' + response.qwerty + "</p></div>");
+                    i=1;
+                    while (i<=10) {
+                        $.each(myArray, function( index, value ) {
+                            if(i==10 && index==0)
+                            {
+                                $("#Opcion"+value).append( "<div><p style='font-size:20vh;line-height:1;'>Ganador<p/><p>"+response.qwerty+"</p></div>" );
                                 //$("#Opcion"+value).append( "<div><p style='font-size:20vh;line-height:1;'>Ganador<p/><p>Juan Perez</p></div>" );
-                            } else {
+                            }
+                            else
+                            {
                                 //$("#Opcion"+value).append( "<div>"+Math.floor((Math.random() * 1000000) + 1)+"</div>" );
-                                indiceCliente = Math.floor(Math.random() * clientes.length);
-                                nombre = firstWord = clientes[indiceCliente].nombre.replace(/ .*/, '');
-                                $("#Opcion" + value).append("<div>" + nombre + " " + clientes[indiceCliente].apellidoPaterno + "</div>");
-                                clientes.splice(indiceCliente, 1);
+                                indiceCliente=Math.floor(Math.random()*clientes.length);
+                                nombre=firstWord = clientes[indiceCliente].nombre.replace(/ .*/,'');
+                                $("#Opcion"+value).append( "<div>"+nombre+" "+clientes[indiceCliente].apellidoPaterno+"</div>" );
+                                clientes.splice(indiceCliente, 1 );
                             }
                         });
                         myArray.shift();
                         i++;
                     }
-                    $(".fly-inn").css('display', 'block');
+                    $(".fly-inn").css('display','block');
                     $(".fly-inn").addClass("fly-in");
                 }
-                flag = false;
+                flag=false;
             },
         });
-    } else {
+    }
+    else
+    {
         return false;
     }
 
 }
-
 function shuffle(a) {
     var j, x, i;
     for (i = a.length - 1; i > 0; i--) {
@@ -217,8 +217,7 @@ function shuffle(a) {
 
 
 
-var COLORS, Confetti, NUM_CONFETTI, PI_2, canvas, confetti, context, drawCircle, drawCircle2, drawCircle3, i, range,
-    xpos;
+var COLORS, Confetti, NUM_CONFETTI, PI_2, canvas, confetti, context, drawCircle, drawCircle2, drawCircle3, i, range, xpos;
 NUM_CONFETTI = 40;
 COLORS = [
     [235, 90, 70],
@@ -232,18 +231,18 @@ canvas = document.getElementById("confeti");
 context = canvas.getContext("2d");
 window.w = 0;
 window.h = 0;
-window.resizeWindow = function () {
+window.resizeWindow = function() {
     window.w = canvas.width = window.innerWidth;
     return window.h = canvas.height = window.innerHeight
 };
 window.addEventListener("resize", resizeWindow, !1);
-window.onload = function () {
+window.onload = function() {
     return setTimeout(resizeWindow, 0)
 };
-range = function (a, b) {
+range = function(a, b) {
     return (b - a) * Math.random() + a
 };
-drawCircle = function (a, b, c, d) {
+drawCircle = function(a, b, c, d) {
     context.beginPath();
     context.moveTo(a, b);
     context.bezierCurveTo(a - 17, b + 14, a + 13, b + 5, a - 5, b + 22);
@@ -251,7 +250,7 @@ drawCircle = function (a, b, c, d) {
     context.strokeStyle = d;
     return context.stroke()
 };
-drawCircle2 = function (a, b, c, d) {
+drawCircle2 = function(a, b, c, d) {
     context.beginPath();
     context.moveTo(a, b);
     context.lineTo(a + 6, b + 9);
@@ -261,7 +260,7 @@ drawCircle2 = function (a, b, c, d) {
     context.fillStyle = d;
     return context.fill()
 };
-drawCircle3 = function (a, b, c, d) {
+drawCircle3 = function(a, b, c, d) {
     context.beginPath();
     context.moveTo(a, b);
     context.lineTo(a + 5, b + 5);
@@ -272,15 +271,15 @@ drawCircle3 = function (a, b, c, d) {
     return context.fill()
 };
 xpos = 0.9;
-document.onmousemove = function (a) {
+document.onmousemove = function(a) {
     return xpos = a.pageX / w
 };
-window.requestAnimationFrame = function () {
-    return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (a) {
+window.requestAnimationFrame = function() {
+    return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function(a) {
         return window.setTimeout(a, 5)
     }
 }();
-Confetti = function () {
+Confetti = function() {
     function a() {
         this.style = COLORS[~~range(0, 5)];
         this.rgb = "rgba(" + this.style[0] + "," + this.style[1] + "," + this.style[2];
@@ -288,8 +287,7 @@ Confetti = function () {
         this.r2 = 2 * this.r;
         this.replace()
     }
-
-    a.prototype.replace = function () {
+    a.prototype.replace = function() {
         this.opacity = 0;
         this.dop = 0.03 * range(1, 4);
         this.x = range(-this.r2, w - this.r2);
@@ -299,7 +297,7 @@ Confetti = function () {
         this.vx = range(0, 2) + 8 * xpos - 5;
         return this.vy = 0.7 * this.r + range(-1, 1)
     };
-    a.prototype.draw = function () {
+    a.prototype.draw = function() {
         var a;
         this.x += this.vx;
         this.y += this.vy;
@@ -314,14 +312,14 @@ Confetti = function () {
     };
     return a
 }();
-confetti = function () {
+confetti = function() {
     var a, b, c;
     c = [];
     i = a = 1;
     for (b = NUM_CONFETTI; 1 <= b ? a <= b : a >= b; i = 1 <= b ? ++a : --a) c.push(new Confetti);
     return c
 }();
-window.step = function () {
+window.step = function() {
     var a, b, c, d;
     requestAnimationFrame(step);
     context.clearRect(0, 0, w, h);
@@ -331,5 +329,4 @@ window.step = function () {
     return d
 };
 step();
-;
   

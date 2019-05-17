@@ -105,3 +105,7 @@ Route::post('UsuarioEditarJson', 'SeguridadController@UsuarioEditarJson');
 //fin sin seguridad
 Route::post('/CambiarPerfilUsuario', 'SeguridadController@ActualizarPerfilUsuario');
 
+#region [Puntoventa]
+Route::post('SincronizarLocalVentaIdFk','LocalController@SincronizarLocalVentaId');
+#endregion
+

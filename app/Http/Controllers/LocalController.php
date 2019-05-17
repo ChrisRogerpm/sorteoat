@@ -37,4 +37,17 @@ class LocalController extends Controller
         }
         return response()->json(['respuesta' => $respuesta, 'mensaje' => $mensaje]);
     }
+
+    public function SincronizarLocalVentaId(Request $request)
+    {
+        $respuesta = false;
+        $mensaje = "";
+        try {
+            TblLocalVenta::SincronizarLocalVentaId($request);
+            $respuesta = true;
+        } catch (QueryException $ex) {
+            $mensaje = $ex->errorInfo;
+        }
+        return response()->json(['respuesta' => $respuesta, 'mensaje' => $mensaje]);
+    }
 }

@@ -124,6 +124,7 @@ $(document).ready(function () {
                     "lengthMenu": [[10, 20, 50, 100, -1], [10, 20, 50, 100, "Todos"]],
                     data: response.data,
                     columns: [
+                        {data:"id",title:"Id"},
                         {
                             data: null, title: "Centro de Costo",
                             "render": function (value) {

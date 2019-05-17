@@ -30,34 +30,35 @@ class TblLocalVenta extends Model
         foreach ($lista as $data) {
             $data_unit_ids = $data['unit_ids'];
             $unit_ids = "";
-//            $ultimo_unit_id = "";
+            $ultimo_unit_id = "";
             for ($i = 0; $i < count($data_unit_ids); $i++) {
                 $data_ultimo_indice = count($data_unit_ids) - 1;
                 if ($data_ultimo_indice == $i) {
                     $unit_ids .= $data_unit_ids[$i];
-//                    $ultimo_unit_id = $data_unit_ids[$i];
+                    $ultimo_unit_id = $data_unit_ids[$i];
                 } else {
                     $unit_ids .= $data_unit_ids[$i] . ",";
-//                    $ultimo_unit_id = $data_unit_ids[$i];
+                    $ultimo_unit_id = $data_unit_ids[$i];
                 }
             }
-//            $response = $curl->consultarLocal($ultimo_unit_id);
-//            $result = $response['result'];
-//            $departamento = $result["ubigeo_id"];
-//            if (strlen($departamento) > 2) {
-//                $departamento = substr($departamento, 0, 2);
-//            } else {
-//                $departamento = $departamento;
-//            }
-//            $idUbigeo = TblUbigeo::ObtenerUbigeoJson((int)$departamento);
-
             if ($data['cc_id'] != "") {
                 $validar = TblLocalVenta::where('cc_id', $data['cc_id'])->first();
                 if ($validar == null) {
+
+                    $response = $curl->consultarLocal($ultimo_unit_id);
+                    $result = $response['result'];
+                    $departamento = $result["ubigeo_id"];
+                    if (strlen($departamento) > 2) {
+                        $departamento = substr($departamento, 0, 2);
+                    } else {
+                        $departamento = $departamento;
+                    }
+                    $idUbigeo = TblUbigeo::ObtenerUbigeoJson((int)$departamento);
+
                     $local_venta = new TblLocalVenta();
                     $local_venta->nombre = $data['nombre'];
                     $local_venta->cc_id = $data['cc_id'];
-//                    $local_venta->idUbigeo = $idUbigeo->id;
+                    $local_venta->idUbigeo = $idUbigeo->id;
                     $local_venta->unit_ids = $unit_ids;
                     $local_venta->save();
                 }
